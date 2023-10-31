@@ -5,7 +5,7 @@ export const HomePage = () => {
         <div>
             {/*CONTENT */}
             <div>
-                <img className="w-full h-screen shadow-md pt-16" src="https://theme.hstatic.net/1000150581/1001058888/14/slider_2.jpg?v=277" alt="" />
+                <img className="w-full h-screen shadow-md pt-16" src="https://theme.hstatic.net/1000150581/1001058888/14/slider_1.jpg?v=305" alt="" />
             </div>
             <div>
                 <h1 className="text-center font-semibold text-3xl py-10">SPORT BASKETBALL</h1>
@@ -68,39 +68,7 @@ export const HomePage = () => {
                     <s>3,209,000₫ <button className="bg-red-600 text-white rounded-lg px-1 text-sm ml-2">-47%</button></s>
                 </div>
             </div>
-            {/*CONTENT */}
-
-            {/*FOOTER */}
-            <div className="flex bg-slate-950 text-white justify-around p-5 mt-10 items-center ">
-                <div className="leading-loose line-clamp-6">
-                    <b className="text-xl"> CÔNG TY CỔ PHẦN AN VIỆT SÔNG HỒNG</b><br />
-                    Địa chỉ: Số 5, ngõ 75, đường Hồng <br />
-                    Hà, Phường Phúc Xá, Quận Ba Đình, <br />
-                    Thành phố Hà Nội<br />
-                    Số điện thoại: 0974945488<br />
-                    Email: online@arr.com.vn<br />
-                    © Bản quyền thuộc về Anta Việt Nam |<br />
-                    Cung cấp bởi Haravan
-                </div>
-                <div className="leading-loose">
-                    <b>CHÍNH SÁCH</b> <br />
-                    Chính sách vận chuyển<br />
-                    Bảo hành/bảo trì<br />
-                    Đổi/trả hàng<br />
-                    Bảo mật thông tin
-                </div>
-                <div className="leading-loose">
-                    <b> HỖ TRỢ KHÁCH HÀNG</b><br />
-                    Giới thiệu<br />
-                    Quy định chung<br />
-                    Hình thức thanh toán<br />
-                    HỆ THỐNG CỬA HÀNG
-                </div>
-                <div>
-                    <i href="" className="font-bold text-2xl">SPORTVN</i>
-                </div>
-            </div>
-            {/*FOOTER */}
+          
         </div>
     )
 }
