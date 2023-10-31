@@ -1,92 +1,94 @@
 import {  useState } from "react";
-export const PhuKien = () => {
+export const Nu = () => {
     const [searchValue, setSearchValue] = useState("");
     const products = [
         {
-            name: "Balo thể thao A-FLASHEDGE EVO1.0 Anta 892311151-1",
+            name: "Áo khoác gió thể thao nữ Anta 852237724-3",
             price: "559,300₫",
             originalPrice: "1,599,000₫",
             discount: "-47%",
-            image: "https://product.hstatic.net/1000150581/product/dscf0232_10aec2ac8bd44a7fa2752cebca8ad6fb_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-7__2__c9df8c05220c451ab0b93c81e52a7e3b_large.jpg",
         },
         {
-            name: "Balo thể thao A-FLASHEDGE EVO1.0 Anta 892311151-1",
+            name: "Áo khoác gió thể thao nữ Anta 852237724-2",
             price: "559,300₫",
             originalPrice: "1,599,000₫",
             discount: "-46%",
-            image: "https://product.hstatic.net/1000150581/product/892311152-1-5_0067931eef27461b8e88c97f9b1ea25d_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-6__3__cbf7a701b39e448c8020f739a0657424_large.jpg",
         },
         {
-            name: "Balo thể thao A-FLASHEDGE EVO1.0 Anta 892311152-3",
+            name: "Áo khoác gió thể thao nam Anta 852237613-2",
             price: "1,119,300₫",
             originalPrice: "1,599,000₫",
             discount: "-50%",
-            image: "https://product.hstatic.net/1000150581/product/892311152-3-5_926c86c19d0c4569a1fe6effabee7927_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-4__5__32190634ce5d4f1e97e515b8cb9a0307_large.jpg",
         },
         {
-            name: "Balo thể thao A-RAIN BREAKER Anta 892318152-1",
+            name: "Áo polo nữ A-CHILL TOUCH Anta 862327134-5",
             price: "1,119,300₫",
             originalPrice: "1,599,000₫",
             discount: "-49%",
-            image: "https://product.hstatic.net/1000150581/product/892318152-3__6__2e7b1f8e77af45c3b289cd51c19bbf3d_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327206-3__1__b6ef81787cc742938de078be26c96da9_large.jpg",
         },
         {
-            name: "Túi thể thao Anta 892317121-1",
+            name: "Áo polo nữ A-CHILL TOUCH Anta 862327134-5",
             price: "1,035,300₫",
             originalPrice: "1,599,000₫",
             discount: "-49%",
-            image: "https://product.hstatic.net/1000150581/product/6be85a259f5a4f04164b_a3f4ac566dc2415cae658395cae3d091_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327134-5__5__055938f59f464d20936aaaa6b33ee722_large.jpg",
         },
         {
-            name: "Balo thể thao A-RAIN BREAKER Anta 892318152-3",
+            name: "Áo polo nữ A-CHILL TOUCH Anta 862327134-5",
             price: "1,080,000₫",
             originalPrice: "1,599,000₫",
             discount: "-49%",
-            image: "https://product.hstatic.net/1000150581/product/3_85cf463865544c59ba86dec128b49cd4_large.png",
+            image: "https://product.hstatic.net/1000150581/product/862327134-1__3__70b7cd5910ec489cb48413e43a3e0df1_large.jpg",
         },
         {
-            name: "Balo thể thao A-RAIN BREAKER Anta 892318152-3",
+            name: "Áo polo nữ A-CHILL TOUCH Anta 862327134-5",
             price: "1,080,000₫",
             originalPrice: "1,599,000₫",
             discount: "-49%",
-            image: "https://product.hstatic.net/1000150581/product/892317189-3-3_67c11328c3434f1db799db24b0d16f2b_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327206-4__4__7ecaf5d25f3f47eeafc59a6b148da40b_large.jpg",
         },
         {
-            name: "Balo thể thao Anta 892317151-2",
+            name: "Áo polo nữ A-CHILL TOUCH Anta 862327134-5",
             price: "1,080,000₫",
             originalPrice: "1,599,000₫",
             discount: "-49%",
-            image: "https://product.hstatic.net/1000150581/product/892317121-2__1__3bcf1abc93d141558576fdf2c266d422_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-4__5__32190634ce5d4f1e97e515b8cb9a0307_large.jpg",
         },
         {
-            name: "Balo thể thao A-FLASHEDGE EVO1.0 Anta 892311151-1",
+            name: "Áo khoác gió thể thao nữ Anta 852237724-3",
             price: "559,300₫",
             originalPrice: "1,599,000₫",
             discount: "-47%",
-            image: "https://product.hstatic.net/1000150581/product/dscf0232_10aec2ac8bd44a7fa2752cebca8ad6fb_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-7__2__c9df8c05220c451ab0b93c81e52a7e3b_large.jpg",
         },
         {
-            name: "Balo thể thao A-FLASHEDGE EVO1.0 Anta 892311151-1",
+            name: "Áo khoác gió thể thao nữ Anta 852237724-2",
             price: "559,300₫",
             originalPrice: "1,599,000₫",
             discount: "-46%",
-            image: "https://product.hstatic.net/1000150581/product/892311152-1-5_0067931eef27461b8e88c97f9b1ea25d_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-6__3__cbf7a701b39e448c8020f739a0657424_large.jpg",
         },
         {
-            name: "Balo thể thao A-FLASHEDGE EVO1.0 Anta 892311152-3",
+            name: "Áo khoác gió thể thao nam Anta 852237613-2",
             price: "1,119,300₫",
             originalPrice: "1,599,000₫",
             discount: "-50%",
-            image: "https://product.hstatic.net/1000150581/product/892311152-3-5_926c86c19d0c4569a1fe6effabee7927_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327704-4__5__32190634ce5d4f1e97e515b8cb9a0307_large.jpg",
         },
         {
-            name: "Balo thể thao A-RAIN BREAKER Anta 892318152-1",
+            name: "Áo khoác gió thể thao nam Anta 852237613-3",
             price: "1,119,300₫",
             originalPrice: "1,599,000₫",
             discount: "-49%",
-            image: "https://product.hstatic.net/1000150581/product/892318152-3__6__2e7b1f8e77af45c3b289cd51c19bbf3d_large.jpg",
+            image: "https://product.hstatic.net/1000150581/product/862327206-3__1__b6ef81787cc742938de078be26c96da9_large.jpg",
         },
     ];
+   
+
     return (
         <div className="pt-16">
             <form className="py-2">
@@ -116,7 +118,7 @@ export const PhuKien = () => {
             </form>
             <div className="grid grid-cols-4">
                 <div className="col-span-1 px-10" >
-                    <h1 className="font-semibold text-xl p-4 text-center">PHỤ KIỆN</h1>
+                    <h1 className="font-semibold text-xl p-4 text-center">QUẦN ÁO NỮ</h1>
                     <h1 className="font-semibold text-xl p-4">PHÂN LOẠI </h1>
                     <div>
                         <p><input type="radio" />  23Q1</p>
