@@ -3,10 +3,35 @@ import { useEffect, useState } from "react";
 export const QuanLy = () => {
     const [value, setValue] = useState([]);
     const [searchValue, setSearchValue] = useState("");
+    const [modal, setModal] = useState(false);
+    const [valueAdd, setValueAdd] = useState({
+        namepd:"",
+        price:"",
+        price_old:""
+    })
     useEffect(() => {
-        axios({
-            url: "http://localhost:8080/product",
-            method: "get"
+        fetchData();
+    }, [])
+    const fetchData = () => {
+        axios.get("http://localhost:8080/product")
+            .then(res => {
+                setValue(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+    const resetData = () => {
+        setValueAdd({
+            namepd:"",
+            price:"",
+            price_old:""
+        })
+    }
+    const searchProduct = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:8080/product/search",{
+            keyword: searchValue
         })
             .then(res => {
                 setValue(res.data);
@@ -14,57 +39,76 @@ export const QuanLy = () => {
             .catch(error => {
                 console.log(error);
             })
-    })
 
+    }
+    const showModal = () => {
+        setModal(!modal);
+    }
+
+    const addProduct = () => {
+        axios.post("http://localhost:8080/product",{
+            product_name: valueAdd.namepd,
+            product_price: valueAdd.price,
+            product_price_old: valueAdd.price_old,
+            product_img: 'abc',
+            product_image: [],
+            product_type: 'girls'
+        })
+            .then(res => {
+                fetchData();
+                setValue(res.data);
+                resetData();
+                setModal(false);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <div className="pt-16">
             <div className="flex items-center justify-between px-5 mt-3">
-                <div className="flex">
-                    <h1 className="font-semibold text- p-3">QUẢN LÝ SẢN PHẨM</h1>
-                    <button className="font-semibold text-white rounded-md px-5 bg-blue-500 mx-2">NAM</button>
-                    <button className="font-semibold text-white rounded-md px-5 bg-blue-500 mx-2">NỮ</button>
-                    <button className="font-semibold text-white rounded-md px-5 bg-blue-500 mx-2">PHỤ KIỆN</button>
-                </div>
-                <button className="font-semibold text-white rounded-md p-3 bg-green-500 ml-2">+ ADD PRODUCT</button>
+                <h1 className="font-semibold text- p-3">QUẢN LÝ SẢN PHẨM</h1>
+                <button className="font-semibold text-white 
+                rounded-md p-1.5 bg-green-500 ml-2" onClick={showModal}>+ ADD PRODUCT</button>
             </div>
-            <form className="py-2">
-                <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only
-                 dark:text-white">
-                    Search
-                </label>
-                <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg
-                            className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 20 20"
-                        >
-                            <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                            />
-                        </svg>
+         { modal &&    <div class="w-1/3 mx-auto ">
+                <form class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                            Tên sản phẩm:
+                        </label>
+                        <input value={valueAdd.namepd}  onChange={(e) => setValueAdd({ ...valueAdd, namepd: e.target.value })} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
                     </div>
-                    <input
-                        type="search"
-                        id="default-search"
-                        className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Mockups, Logos..."
-                        required
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                    />
-                    <button
-                        type="submit"
-                        className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                        Search
-                    </button>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                            Giá khuyến mãi sản phẩm:
+                        </label>
+                        <input value={valueAdd.price} onChange={(e) => setValueAdd({ ...valueAdd, price: e.target.value })} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                            Giá gốc sản phẩm:
+                        </label>
+                        <input value={valueAdd.price_old} onChange={(e) => setValueAdd({ ...valueAdd, price_old: e.target.value })} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button onClick={addProduct} class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            Thêm
+                        </button>
+                        <a onClick={showModal} class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                            Hủy
+                        </a>
+                    </div>
+                </form>
+            </div>}
+            <form className="py-2">
+                <div className="flex items-center justify-center">
+                    <input type="text" placeholder="Nhập để tìm kiếm..."
+                        className="w-3/4 border border-gray-300 py-2 px-2 rounded-md"
+                        value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
+                    <button className="px-5 bg-gray-500 -ml-1 rounded-e  text-white py-2.5"
+                        onClick={searchProduct}
+                    >Tìm kiếm</button>
                 </div>
             </form>
             <table className="border-collapse border border-slate-400 text-center mx-auto">
@@ -80,7 +124,7 @@ export const QuanLy = () => {
                 </thead>
                 <tbody>
                     {
-                        value.map((item, index) => (
+                        value && value.length > 0 && value.map((item, index) => (
                             <tr key={index}>
                                 <td className="border border-slate-300 px-4 font-semibold">{item._id}</td>
                                 <td className="border border-slate-300 px-4">
@@ -98,8 +142,8 @@ export const QuanLy = () => {
                                     {item.product_price}00đ
                                 </td>
                                 <td className="border border-slate-300 px-4">
-                                    <button className="text-white font-semibold rounded-md p-3 bg-yellow-500 mr-2">UPDATE</button>
-                                    <button className="text-white font-semibold rounded-md p-3 bg-red-500 px-2">DELETE</button>
+                                    <button className="text-white font-semibold rounded-md p-1.5 bg-yellow-500 mr-2">UPDATE</button>
+                                    <button className="text-white font-semibold rounded-md p-1.5 bg-red-500 px-2">DELETE</button>
                                 </td>
                             </tr>
                         ))

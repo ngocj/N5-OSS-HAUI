@@ -11,6 +11,7 @@ import { Detail } from "./pages/Detail";
 import { GioHang } from "./pages/GioHang";
 import { Register } from "./account/register";
 import { Forgot } from "./account/fogotpw";
+import { ChiTiet } from "./component/detail";
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/giohang" element={<GioHang />} />
             <Route path="/dangky" element={ <Register/>} />
             <Route path="/forgot" element={ <Forgot/>} />
+            <Route path="/detail" element={ <ChiTiet/>} />
            
         </Routes>
         <Footer/>
